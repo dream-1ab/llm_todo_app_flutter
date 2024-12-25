@@ -1,0 +1,43 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+# Flutter/Dart build and dependency directories
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub/
+.pub-cache/
+
+# Android build files
+**/android/gradlew
+**/android/gradlew.bat
+**/android/.gradle
+**/android/captures/
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.*
+
+# iOS build files
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/ephemeral
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Runner.xcworkspace
+
+# Web related
+**/web/favicon.png
+**/web/icons/
+**/web/manifest.json
+
+# Coverage
+coverage/
+
+# Symbols
+app.*.symbols
+
+# Obfuscation
+app.*.map.json

@@ -1,0 +1,81 @@
+tools: [
+            if (actions.contains(ActionType.add_task)) ChatCompletionTool(type: ChatCompletionToolType.function, function: FunctionObject(
+              name: "add_new_task",
+              description: "Add a new task to the TODO list",
+              parameters: {
+                "type": "object",
+                "required": ["title", "description", "due_date"],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "The title of the task, based on the user message you can extract the title without specifying the exact title",
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "The description of the task, based on the user message you can extract the description without specifying the exact description",
+                  },
+                  "due_date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The due date of the task, based on the user message you can extract the due date without specifying the exact due date",
+                  },
+                },
+              },
+            )),
+            if (actions.contains(ActionType.complete_task)) ChatCompletionTool(type: ChatCompletionToolType.function, function: FunctionObject(
+              name: "complete_task",
+              description: "Mark a task as complete",
+              parameters: {
+                "type": "object",
+                "required": ["task_id"],
+                "properties": {
+                  "task_id": {
+                    "type": "string",
+                    "description": "The ID of the task to mark as complete, based on the user message you can extract the task id without specifying the exact task id",
+                  },
+                },
+              },
+            )),
+            if (actions.contains(ActionType.delete_task)) ChatCompletionTool(type: ChatCompletionToolType.function, function: FunctionObject(
+              name: "delete_task",
+              description: "Delete a task",
+              parameters: {
+                "type": "object",
+                "required": ["task_id"],
+                "properties": {
+                  "task_id": {
+                    "type": "string",
+                    "description": "The ID of the task to delete, based on the user message you can extract the task id without specifying the exact task id",
+                  },
+                },
+              },
+            )),
+            if (actions.contains(ActionType.undo_previous_operation)) ChatCompletionTool(type: ChatCompletionToolType.function, function: FunctionObject(
+              name: "undo_previous_operation",
+              description: "Undo the previous operation",
+              parameters: {
+                "type": "object",
+                "required": ["undo_count"],
+                "properties": {
+                  "undo_count": {
+                    "type": "integer",
+                    "description": "The number of operations to undo, based on the user message you can extract the number of operations to undo without specifying the exact number of operations to undo",
+                  },
+                },
+              },
+            )),
+            if (actions.contains(ActionType.change_app_color_theme)) ChatCompletionTool(type: ChatCompletionToolType.function, function: FunctionObject(
+              name: "change_app_color_theme",
+              description: "Change the app color theme",
+              parameters: {
+                "type": "object",
+                "required": ["theme"],
+                "properties": {
+                  "theme": {
+                    "type": "string",
+                    "description": "The new color theme, based on the user message you can extract the new color theme without requiring user to provide it",
+                  },
+                },
+              },
+            ))
+          ]
